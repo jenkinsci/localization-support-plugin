@@ -1,0 +1,5 @@
+<?jelly escape-by-default='true'?>
+<div>
+    Supporting infrastructure for standalone localization plugins.
+    On its own, this plugin doesn't do a lot, it requires other plugins to work.
+</div>

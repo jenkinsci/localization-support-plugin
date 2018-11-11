@@ -1,0 +1,10 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form">
+    <div class="alert alert-warning">
+        <form method="post" action="${rootURL}/${it.url}/act" name="${it.id}">
+            <f:submit name="no" value="${%Dismiss}"/>
+            <f:submit value="${%Configure…}"/>
+        </form>
+        ${%message(it.plugin.displayName)}
+    </div>
+</j:jelly>
