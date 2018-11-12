@@ -50,6 +50,9 @@ import java.lang.reflect.Method;
 @Symbol("localizationMonitor")
 @Restricted(NoExternalUse.class)
 public class LocalizationMonitor extends AdministrativeMonitor {
+
+    // TODO extend with a check for the Metaclassloader.debugLoader
+
     private PluginWrapper plugin;
 
     @Override
