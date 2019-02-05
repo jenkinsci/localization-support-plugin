@@ -95,4 +95,14 @@ public abstract class LocalizationContributor implements ExtensionPoint {
         // fallback to default: Looking in the class context
         return clazz.getResource(resource);
     }
+
+    /**
+     * Look up a resource for a plugin.
+     *
+     * @param resource the resource to look up
+     * @param plugin the plugin
+     * @return resource for a plugin, or null if not found
+     */
+    @CheckForNull
+    public abstract URL getPluginResource(@Nonnull String resource, @Nonnull PluginWrapper plugin);
 }

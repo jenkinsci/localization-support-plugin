@@ -27,7 +27,6 @@ import hudson.init.Initializer;
 import jenkins.model.Jenkins;
 import org.kohsuke.accmod.Restricted;
 import org.kohsuke.accmod.restrictions.NoExternalUse;
-import org.kohsuke.stapler.MetaClassLoader;
 import org.kohsuke.stapler.WebApp;
 import org.kohsuke.stapler.jelly.JellyFacet;
 
@@ -40,9 +39,5 @@ public class StaplerManager {
         // Override where the Jelly views look for resource bundles
         JellyFacet facet = webApp.getFacet(JellyFacet.class);
         facet.resourceBundleFactory = new ResourceBundleFactoryImpl();
-
-        // Provide a fallback source for resources
-        // TODO restrict to localization plugins only, or perhaps add a dedicated feature to Stapler for this
-        MetaClassLoader.debugLoader = new MetaClassLoader(Jenkins.get().pluginManager.uberClassLoader);
     }
 }

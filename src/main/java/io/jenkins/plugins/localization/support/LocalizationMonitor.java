@@ -34,14 +34,12 @@ import org.kohsuke.accmod.Restricted;
 import org.kohsuke.accmod.restrictions.NoExternalUse;
 import org.kohsuke.stapler.HttpResponse;
 import org.kohsuke.stapler.StaplerRequest;
-import org.kohsuke.stapler.StaplerResponse;
 import org.kohsuke.stapler.WebApp;
 import org.kohsuke.stapler.interceptor.RequirePOST;
 import org.kohsuke.stapler.jelly.JellyFacet;
 import org.kohsuke.stapler.jelly.ResourceBundleFactory;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
 
 /**
  * This admin monitor ensures that Stapler's JellyFacet uses this plugin's implementation.
@@ -50,8 +48,6 @@ import java.lang.reflect.Method;
 @Symbol("localizationMonitor")
 @Restricted(NoExternalUse.class)
 public class LocalizationMonitor extends AdministrativeMonitor {
-
-    // TODO extend with a check for the Metaclassloader.debugLoader
 
     private PluginWrapper plugin;
 
