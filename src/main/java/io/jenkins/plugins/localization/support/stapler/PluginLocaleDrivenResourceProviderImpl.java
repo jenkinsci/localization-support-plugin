@@ -28,16 +28,15 @@ import hudson.ExtensionList;
 import hudson.PluginWrapper;
 import io.jenkins.plugins.localization.support.LocalizationContributor;
 import jenkins.model.Jenkins;
-import org.kohsuke.stapler.LocaleDrivenResourceProvider;
+import jenkins.PluginLocaleDrivenResourceProvider;
 
 import javax.annotation.Nonnull;
 import java.net.URL;
 import java.util.logging.Logger;
 
 @Extension
-public class LocaleDrivenResourceProviderImpl extends LocaleDrivenResourceProvider {
+public class PluginLocaleDrivenResourceProviderImpl implements PluginLocaleDrivenResourceProvider {
 
-    @Override
     public URL lookup(@Nonnull String path) {
         PluginWrapper pluginWrapper = findPluginForResourceUrl(path);
         if (pluginWrapper != null) {
@@ -72,5 +71,5 @@ public class LocaleDrivenResourceProviderImpl extends LocaleDrivenResourceProvid
         return null;
     }
 
-    private static final Logger LOGGER = Logger.getLogger(LocaleDrivenResourceProviderImpl.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PluginLocaleDrivenResourceProviderImpl.class.getName());
 }
