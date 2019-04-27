@@ -17,7 +17,7 @@
     <url>https://wiki.jenkins.io/display/JENKINS/Localization+Support+Plugin</url>
 
     <properties>
-        <jenkins.version>2.172-rc28146.20ab1dbc72fc</jenkins.version>
+        <jenkins.version>2.173</jenkins.version>
         <java.level>8</java.level>
     </properties>
 
