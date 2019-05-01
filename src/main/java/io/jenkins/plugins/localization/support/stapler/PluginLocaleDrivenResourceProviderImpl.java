@@ -29,12 +29,15 @@ import hudson.PluginWrapper;
 import io.jenkins.plugins.localization.support.LocalizationContributor;
 import jenkins.model.Jenkins;
 import jenkins.PluginLocaleDrivenResourceProvider;
+import org.kohsuke.accmod.Restricted;
+import org.kohsuke.accmod.restrictions.NoExternalUse;
 
 import javax.annotation.Nonnull;
 import java.net.URL;
 import java.util.logging.Logger;
 
 @Extension
+@Restricted(NoExternalUse.class)
 public class PluginLocaleDrivenResourceProviderImpl implements PluginLocaleDrivenResourceProvider {
 
     public URL lookup(@Nonnull String path) {
