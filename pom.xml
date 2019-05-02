@@ -10,14 +10,14 @@
 
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>localization-support</artifactId>
-    <version>1.1</version>
+    <version>${revision}${changelist}</version>
     <packaging>hpi</packaging>
 
     <name>Localization Support Plugin</name>
     <url>https://wiki.jenkins.io/display/JENKINS/Localization+Support+Plugin</url>
 
     <properties>
-        <revision>1.1</revision>
+        <revision>1.2</revision>
         <changelist>-SNAPSHOT</changelist>
         <jenkins.version>2.173</jenkins.version>
         <java.level>8</java.level>
@@ -42,7 +42,7 @@
         <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
-        <tag>localization-support-1.1</tag>
+        <tag>${scmTag}</tag>
     </scm>
 
     <repositories>
