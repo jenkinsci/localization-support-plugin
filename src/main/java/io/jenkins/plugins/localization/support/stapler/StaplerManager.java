@@ -23,21 +23,50 @@
  */
 package io.jenkins.plugins.localization.support.stapler;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import hudson.ExtensionList;
+import hudson.ExtensionListListener;
 import hudson.init.Initializer;
+import io.jenkins.plugins.localization.support.LocalizationContributor;
 import jenkins.model.Jenkins;
 import org.kohsuke.accmod.Restricted;
 import org.kohsuke.accmod.restrictions.NoExternalUse;
+import org.kohsuke.stapler.MetaClassLoader;
 import org.kohsuke.stapler.WebApp;
 import org.kohsuke.stapler.jelly.JellyFacet;
 
+import java.net.URL;
+import java.net.URLClassLoader;
+
 @Restricted(NoExternalUse.class)
-public class StaplerManager {
+public class StaplerManager extends ExtensionListListener {
     @Initializer
     public static void initialize() {
-        WebApp webApp = WebApp.get(Jenkins.get().servletContext);
+        { // resources for Jelly files
+            WebApp webApp = WebApp.get(Jenkins.get().servletContext);
 
-        // Override where the Jelly views look for resource bundles
-        JellyFacet facet = webApp.getFacet(JellyFacet.class);
-        facet.resourceBundleFactory = new ResourceBundleFactoryImpl();
+            // Override where the Jelly views look for resource bundles
+            JellyFacet facet = webApp.getFacet(JellyFacet.class);
+            facet.resourceBundleFactory = new ResourceBundleFactoryImpl();
+        }
+
+        { // Provide a fallback source for resources from Descriptor#doHelp
+            ExtensionList.lookup(LocalizationContributor.class).addListener(new StaplerManager());
+
+            // TODO add a dedicated feature to Stapler for this
+            MetaClassLoader.debugLoader = buildMetaClassLoader();
+        }
+    }
+
+    private static MetaClassLoader buildMetaClassLoader() {
+        return new MetaClassLoader(new URLClassLoader(ExtensionList.lookup(LocalizationContributor.class).stream()
+                .map(c -> c.getClass().getProtectionDomain().getCodeSource().getLocation())
+                .toArray(URL[]::new)));
+    }
+
+    @Override
+    @SuppressFBWarnings("ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD")
+    public void onChange() {
+        MetaClassLoader.debugLoader = buildMetaClassLoader();
     }
 }
