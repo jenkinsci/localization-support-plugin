@@ -37,13 +37,9 @@ import org.kohsuke.stapler.jelly.JellyFacet;
 
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Objects;
-import java.util.logging.Logger;
 
 @Restricted(NoExternalUse.class)
 public class StaplerManager extends ExtensionListListener {
-    private static final Logger LOGGER = Logger.getLogger(StaplerManager.class.getName());
-
     @Initializer
     public static void initialize() {
         { // resources for Jelly files
@@ -64,10 +60,7 @@ public class StaplerManager extends ExtensionListListener {
 
     private static MetaClassLoader buildMetaClassLoader() {
         return new MetaClassLoader(new URLClassLoader(ExtensionList.lookup(LocalizationContributor.class).stream()
-                .map(c -> Jenkins.get().pluginManager.whichPlugin(c.getClass()))
-                .filter(Objects::nonNull)
-                .map(plugin -> plugin.baseResourceURL)
-                .peek(it -> LOGGER.info("Registered resource directory " + it + " for localized resource use"))
+                .map(c -> c.getClass().getProtectionDomain().getCodeSource().getLocation())
                 .toArray(URL[]::new)));
     }
 
