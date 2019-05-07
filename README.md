@@ -20,9 +20,17 @@ Stapler views look up `viewname_??.properties` files in directories with the sam
 `io.jenkins.plugins.localization.support.stapler.ResourceBundleFactoryImpl` is a `ResourceBundleFactory` that gets installed by `StaplerManager`.
 I ends up calling `LocalizationContributor#findResource(String, Class)` with a cleaned up `String` argument.
 <!-- TODO details -->
+<!-- TODO are localized views (the entire Jelly) a thing, or just resources? -->
 
 
 ### Descriptor#doHelp
+
+#### Stapler views
+
+`Descriptor#doHelp` will serve corresponding `help.jelly` views, if they exist, and lets Stapler localize them (see above).
+
+
+#### HTML files
 
 `Descriptor#doHelp` looks up `com/acme/package/MyDescribable/help-fieldname_??.html` HTML files and serves them at `/descriptor/myDescriptorSymbol/help/fieldname`, typically corresponding to specific fields in views.
 It also supports `com/acme/package/MyDescribable/help_??.html` at `/descriptor/myDescriptorSymbol/help`.
