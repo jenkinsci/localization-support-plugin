@@ -70,7 +70,7 @@ If the default resource layout is used, no further code is needed.
     package io.jenkins.plugins.localization_foo;
     
     import hudson.Extension;
-    import io.jenkins.plugins.localization.support.LocalizationContributor
+    import io.jenkins.plugins.localization.support.LocalizationContributor;
     
     @Extension
     public class LocalizationContributorImpl extends LocalizationContributor {
