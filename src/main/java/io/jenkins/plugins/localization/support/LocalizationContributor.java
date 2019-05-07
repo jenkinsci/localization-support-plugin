@@ -43,7 +43,17 @@ public abstract class LocalizationContributor implements ExtensionPoint {
      * @return the URL for the specified resource, or null if not found
      */
     @CheckForNull
-    public abstract URL getResource(@Nonnull String resource);
+    public URL getResource(@Nonnull String resource) {
+        String modifiedPath = resource;
+        if (resource.startsWith("/")) {
+            modifiedPath = modifiedPath.substring(1);
+        }
+        URL url = getClass().getClassLoader().getResource(modifiedPath);
+        if (url != null) {
+            LOGGER.fine(() -> "Found localized resource " + resource + " at " + url + " in " + getClass());
+        }
+        return url;
+    }
 
     /**
      * Returns the name of this implementation, defaulting to the class name.
@@ -88,6 +98,7 @@ public abstract class LocalizationContributor implements ExtensionPoint {
         for (LocalizationContributor contributor : ExtensionList.lookup(LocalizationContributor.class)) {
             URL url = contributor.getResource(resourceName);
             if (url != null) {
+                LOGGER.finer(() -> "Found localized resource " + resource + " for " + clazz.getName() + " at " + url);
                 return url;
             }
         }
@@ -104,5 +115,7 @@ public abstract class LocalizationContributor implements ExtensionPoint {
      * @return resource for a plugin, or null if not found
      */
     @CheckForNull
-    public abstract URL getPluginResource(@Nonnull String resource, @Nonnull PluginWrapper plugin);
+    public URL getPluginResource(@Nonnull String resource, @Nonnull PluginWrapper plugin) {
+        return getResource(resource);
+    }
 }
