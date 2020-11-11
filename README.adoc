@@ -1,5 +1,5 @@
-[[localization-support-plugin]]
-= localization-support-plugin
+= Localization Support Plugin
+
 :toc: macro
 :toc-title:
 ifdef::env-github[]
