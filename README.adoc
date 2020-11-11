@@ -10,9 +10,6 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-image:https://img.shields.io/jenkins/plugin/v/localization-support.svg[Jenkins Plugin,link=https://plugins.jenkins.io/localization-support]
-image:https://img.shields.io/jenkins/plugin/i/localization-support.svg?color=blue[Jenkins Plugin Installs,link=https://plugins.jenkins.io/localization-support]
-image:https://ci.jenkins.io/job/Plugins/job/localization-support-plugin/job/master/badge/icon[Build Status,link=https://ci.jenkins.io/job/Plugins/job/localization-support-plugin/job/master/]
 
 Supporting infrastructure for standalone localization plugins.
 This plugin doesn't provide notable end user features, and will be installed as dependency of other plugins that use the features provided by this plugin.
