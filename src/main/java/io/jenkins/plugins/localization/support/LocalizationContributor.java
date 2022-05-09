@@ -23,19 +23,16 @@
  */
 package io.jenkins.plugins.localization.support;
 
+import edu.umd.cs.findbugs.annotations.CheckForNull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.ExtensionList;
 import hudson.ExtensionPoint;
 import hudson.PluginWrapper;
 import jenkins.model.Jenkins;
 
-import javax.annotation.CheckForNull;
-import javax.annotation.Nonnull;
 import java.net.URL;
-import java.util.logging.Logger;
 
 public abstract class LocalizationContributor implements ExtensionPoint {
-
-    private static final Logger LOGGER = Logger.getLogger(LocalizationContributor.class.getName());
 
     /**
      * Returns the specific resource located in the resources searched by the specific implementation, or null if not found.
@@ -43,13 +40,13 @@ public abstract class LocalizationContributor implements ExtensionPoint {
      * @return the URL for the specified resource, or null if not found
      */
     @CheckForNull
-    public abstract URL getResource(@Nonnull String resource);
+    public abstract URL getResource(@NonNull String resource);
 
     /**
      * Returns the name of this implementation, defaulting to the class name.
      * @return the name of this implementation
      */
-    @Nonnull
+    @NonNull
     public String getName() {
         return getClass().getName();
     }
@@ -104,5 +101,5 @@ public abstract class LocalizationContributor implements ExtensionPoint {
      * @return resource for a plugin, or null if not found
      */
     @CheckForNull
-    public abstract URL getPluginResource(@Nonnull String resource, @Nonnull PluginWrapper plugin);
+    public abstract URL getPluginResource(@NonNull String resource, @NonNull PluginWrapper plugin);
 }
