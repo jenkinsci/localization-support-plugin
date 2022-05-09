@@ -24,6 +24,10 @@
 package io.jenkins.plugins.localization.support.stapler;
 
 import io.jenkins.plugins.localization.support.LocalizationContributor;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.PropertyResourceBundle;
 import org.kohsuke.accmod.Restricted;
 import org.kohsuke.accmod.restrictions.NoExternalUse;
 import org.kohsuke.stapler.jelly.ResourceBundle;
@@ -68,7 +72,16 @@ public final class ResourceBundleFactoryImpl extends ResourceBundleFactory {
             URL url = LocalizationContributor.findResource(name, getClass());
             if (url != null) {
                 try (InputStream stream = url.openStream()) {
-                    props.load(stream);
+                    PropertyResourceBundle propertyResourceBundle = new PropertyResourceBundle(stream);
+                    Enumeration<String> keys = propertyResourceBundle.getKeys();
+                    // TODO Java 9+ can use 'asIterator' and get rid of below collections conversion
+                    List<String> keysAsSaneType = Collections.list(keys);
+
+                    for (String localKey : keysAsSaneType) {
+                        String value = propertyResourceBundle.getString(localKey);
+                        props.setProperty(localKey, value);
+                    }
+
                 } catch (IOException ex) {
                     LOGGER.log(Level.WARNING, "Failed to load localized resources file " + name, ex);
                 }
