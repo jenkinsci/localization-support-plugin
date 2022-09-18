@@ -31,6 +31,7 @@ import hudson.PluginWrapper;
 import jenkins.model.Jenkins;
 
 import java.net.URL;
+import java.util.logging.Logger;
 
 public abstract class LocalizationContributor implements ExtensionPoint {
 
