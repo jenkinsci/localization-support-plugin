@@ -23,6 +23,7 @@
  */
 package io.jenkins.plugins.localization.support.stapler;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
 import hudson.ExtensionList;
 import hudson.PluginWrapper;
@@ -32,7 +33,6 @@ import jenkins.PluginLocaleDrivenResourceProvider;
 import org.kohsuke.accmod.Restricted;
 import org.kohsuke.accmod.restrictions.NoExternalUse;
 
-import javax.annotation.Nonnull;
 import java.net.URL;
 import java.util.logging.Logger;
 
@@ -40,7 +40,7 @@ import java.util.logging.Logger;
 @Restricted(NoExternalUse.class)
 public class PluginLocaleDrivenResourceProviderImpl implements PluginLocaleDrivenResourceProvider {
 
-    public URL lookup(@Nonnull String path) {
+    public URL lookup(@NonNull String path) {
         PluginWrapper pluginWrapper = findPluginForResourceUrl(path);
         if (pluginWrapper != null) {
             path = path.substring(pluginWrapper.baseResourceURL.toString().length());
