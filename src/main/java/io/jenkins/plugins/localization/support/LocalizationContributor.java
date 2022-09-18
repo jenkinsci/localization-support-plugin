@@ -34,6 +34,8 @@ import java.net.URL;
 
 public abstract class LocalizationContributor implements ExtensionPoint {
 
+    private static final Logger LOGGER = Logger.getLogger(LocalizationContributor.class.getName());
+
     /**
      * Returns the specific resource located in the resources searched by the specific implementation, or null if not found.
      * @param resource The resource to look for as absolute path (cf. ClassLoader#getResource)
