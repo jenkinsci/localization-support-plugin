@@ -63,7 +63,21 @@ If such a case is discovered, the administrative monitor informs users about the
 
 
 
-## Expected Layout
+## Implementation Guide
 
-Implementing plugins need to provide the localized resources in the same general directory layout as they would be placed in core and individual plugins.
+Implementing plugins are expected to provide the localized resources in the same general directory layout as they would be placed in core and individual plugins.
 
+They are expected to provide an implementation of `LocalizationContributor` that is annotated with `@Extension`.
+If the default resource layout is used, no further code is needed.
+
+    package io.jenkins.plugins.localization_foo;
+    
+    import hudson.Extension;
+    import io.jenkins.plugins.localization.support.LocalizationContributor;
+    
+    @Extension
+    public class LocalizationContributorImpl extends LocalizationContributor {
+      // no content needed
+    }
+
+If plugins deviate from the expected resource layout, they may implement `#getResource(String)` and `#getPluginResource(String, PluginWrapper)`.
