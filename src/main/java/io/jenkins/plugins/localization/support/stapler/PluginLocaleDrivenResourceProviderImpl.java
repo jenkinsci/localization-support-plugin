@@ -44,9 +44,9 @@ public class PluginLocaleDrivenResourceProviderImpl implements PluginLocaleDrive
         PluginWrapper pluginWrapper = findPluginForResourceUrl(path);
         if (pluginWrapper != null) {
             path = path.substring(pluginWrapper.baseResourceURL.toString().length());
-            LOGGER.fine("Looking up localized file '" + path + "' from plugin '" + pluginWrapper + "'");
+            LOGGER.finer("Looking up localized file '" + path + "' from plugin '" + pluginWrapper + "'");
         } else {
-            LOGGER.fine("Looking up localized file '" + path + "' from webapp");
+            LOGGER.finer("Looking up localized file '" + path + "' from webapp");
         }
         for (LocalizationContributor contributor : ExtensionList.lookup(LocalizationContributor.class)) {
             URL url;
@@ -61,7 +61,7 @@ public class PluginLocaleDrivenResourceProviderImpl implements PluginLocaleDrive
                 return url;
             }
         }
-        LOGGER.fine("Failed to find localized file '" + path + "'");
+        LOGGER.finer("Failed to find localized file '" + path + "'");
         return null;
     }
 
