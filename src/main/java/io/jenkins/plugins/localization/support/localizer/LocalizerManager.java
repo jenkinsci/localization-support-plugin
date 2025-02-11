@@ -47,7 +47,7 @@ public class LocalizerManager extends ExtensionListListener {
         ResourceBundleHolder.clearCache();
     }
 
-    @Initializer(after = InitMilestone.JOB_LOADED)
+    @Initializer(after = InitMilestone.PLUGINS_STARTED)
     public static void initialize() {
         ResourceProvider.setProvider(new ResourceProviderImpl());
         ResourceBundleHolder.clearCache();
