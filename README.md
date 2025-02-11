@@ -49,7 +49,7 @@ There is one, `PluginLocaleDrivenResourceProviderImpl` in `localization-support`
 
 ### Plugin webapp resources
 
-Plugins expose `src/main/webapp/` resource files directly packaged into the jpi file via `Plugin#doDynamic` at `/plugin/namehere/` invoking `StaplerResponse#serveLocalizedFile`.
+Plugins expose `src/main/webapp/` resource files directly packaged into the jpi file via `Plugin#doDynamic` at `/plugin/namehere/` invoking `StaplerResponse2#serveLocalizedFile`.
 This calls `#selectResourceByLocale` which ends up invoking `LocaleDrivenResourceProvider#lookupResource`.
 See the previous section for further details.
 
