@@ -43,7 +43,7 @@ public class StaplerManager extends ExtensionListListener {
     @Initializer
     public static void initialize() {
         { // resources for Jelly files
-            WebApp webApp = WebApp.get(Jenkins.get().servletContext);
+            WebApp webApp = WebApp.get(Jenkins.get().getServletContext());
 
             // Override where the Jelly views look for resource bundles
             JellyFacet facet = webApp.getFacet(JellyFacet.class);

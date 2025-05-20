@@ -33,7 +33,7 @@ import hudson.model.AdministrativeMonitor;
 import org.kohsuke.accmod.Restricted;
 import org.kohsuke.accmod.restrictions.NoExternalUse;
 import org.kohsuke.stapler.HttpResponse;
-import org.kohsuke.stapler.StaplerRequest;
+import org.kohsuke.stapler.StaplerRequest2;
 import org.kohsuke.stapler.WebApp;
 import org.kohsuke.stapler.interceptor.RequirePOST;
 import org.kohsuke.stapler.jelly.JellyFacet;
@@ -60,7 +60,7 @@ public class LocalizationMonitor extends AdministrativeMonitor {
     public boolean isActivated() {
         Jenkins jenkins = Jenkins.get();
 
-        WebApp webContext = WebApp.get(jenkins.servletContext);
+        WebApp webContext = WebApp.get(jenkins.getServletContext());
         JellyFacet facet = webContext.getFacet(JellyFacet.class);
         ResourceBundleFactory factory = facet.resourceBundleFactory;
 
@@ -72,7 +72,7 @@ public class LocalizationMonitor extends AdministrativeMonitor {
 
     @RequirePOST
     @Restricted(NoExternalUse.class)
-    public HttpResponse doAct(StaplerRequest req) throws IOException {
+    public HttpResponse doAct(StaplerRequest2 req) throws IOException {
         if (req.hasParameter("no")) {
             disable(true);
             return HttpResponses.redirectViaContextPath("/manage");
