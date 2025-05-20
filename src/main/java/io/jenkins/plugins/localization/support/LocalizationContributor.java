@@ -31,8 +31,11 @@ import hudson.PluginWrapper;
 import jenkins.model.Jenkins;
 
 import java.net.URL;
+import java.util.logging.Logger;
 
 public abstract class LocalizationContributor implements ExtensionPoint {
+
+    private static final Logger LOGGER = Logger.getLogger(LocalizationContributor.class.getName());
 
     /**
      * Returns the specific resource located in the resources searched by the specific implementation, or null if not found.
@@ -40,7 +43,17 @@ public abstract class LocalizationContributor implements ExtensionPoint {
      * @return the URL for the specified resource, or null if not found
      */
     @CheckForNull
-    public abstract URL getResource(@NonNull String resource);
+    public URL getResource(@NonNull String resource) {
+        String modifiedPath = resource;
+        if (resource.startsWith("/")) {
+            modifiedPath = modifiedPath.substring(1);
+        }
+        URL url = getClass().getClassLoader().getResource(modifiedPath);
+        if (url != null) {
+            LOGGER.fine(() -> "Found localized resource " + resource + " at " + url + " in " + getClass());
+        }
+        return url;
+    }
 
     /**
      * Returns the name of this implementation, defaulting to the class name.
@@ -85,6 +98,7 @@ public abstract class LocalizationContributor implements ExtensionPoint {
         for (LocalizationContributor contributor : ExtensionList.lookup(LocalizationContributor.class)) {
             URL url = contributor.getResource(resourceName);
             if (url != null) {
+                LOGGER.finer(() -> "Found localized resource " + resource + " for " + clazz.getName() + " at " + url);
                 return url;
             }
         }
@@ -101,5 +115,7 @@ public abstract class LocalizationContributor implements ExtensionPoint {
      * @return resource for a plugin, or null if not found
      */
     @CheckForNull
-    public abstract URL getPluginResource(@NonNull String resource, @NonNull PluginWrapper plugin);
+    public URL getPluginResource(@NonNull String resource, @NonNull PluginWrapper plugin) {
+        return getResource(resource);
+    }
 }
