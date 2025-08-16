@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>5.17</version>
+        <version>5.22</version>
         <relativePath />
     </parent>
 
@@ -21,6 +21,7 @@
         <changelist>-SNAPSHOT</changelist>
         <jenkins.version>2.479.3</jenkins.version>
         <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
+        <hpi.strictBundledArtifacts>true</hpi.strictBundledArtifacts>
     </properties>
 
     <licenses>
@@ -34,7 +35,8 @@
         <dependency>
             <groupId>org.kohsuke.metainf-services</groupId>
             <artifactId>metainf-services</artifactId>
-            <version>1.7</version>
+            <version>1.11</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
