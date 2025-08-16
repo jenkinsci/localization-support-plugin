@@ -36,6 +36,7 @@
     <jenkins.version>2.479.3</jenkins.version>
     <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
     <hpi.strictBundledArtifacts>true</hpi.strictBundledArtifacts>
+    <spotless.check.skip>false</spotless.check.skip>
   </properties>
 
   <dependencies>
