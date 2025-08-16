@@ -24,21 +24,20 @@
 package io.jenkins.plugins.localization.support.stapler;
 
 import io.jenkins.plugins.localization.support.LocalizationContributor;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Properties;
 import java.util.PropertyResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.kohsuke.accmod.Restricted;
 import org.kohsuke.accmod.restrictions.NoExternalUse;
 import org.kohsuke.stapler.jelly.ResourceBundle;
 import org.kohsuke.stapler.jelly.ResourceBundleFactory;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @Restricted(NoExternalUse.class)
 public final class ResourceBundleFactoryImpl extends ResourceBundleFactory {
@@ -64,7 +63,8 @@ public final class ResourceBundleFactoryImpl extends ResourceBundleFactory {
                 cleanBaseName = getBaseName().substring(getBaseName().indexOf(JAR_INDICATOR) + JAR_INDICATOR.length());
             } else if (getBaseName().contains(DEVELOPMENT_RESOURCES)) {
                 // support development
-                cleanBaseName = getBaseName().substring(getBaseName().indexOf(DEVELOPMENT_RESOURCES) + DEVELOPMENT_RESOURCES.length());
+                cleanBaseName = getBaseName()
+                        .substring(getBaseName().indexOf(DEVELOPMENT_RESOURCES) + DEVELOPMENT_RESOURCES.length());
             }
 
             String name = cleanBaseName + "_" + locale + ".properties";

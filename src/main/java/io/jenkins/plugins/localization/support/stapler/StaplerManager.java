@@ -28,15 +28,14 @@ import hudson.ExtensionList;
 import hudson.ExtensionListListener;
 import hudson.init.Initializer;
 import io.jenkins.plugins.localization.support.LocalizationContributor;
+import java.net.URL;
+import java.net.URLClassLoader;
 import jenkins.model.Jenkins;
 import org.kohsuke.accmod.Restricted;
 import org.kohsuke.accmod.restrictions.NoExternalUse;
 import org.kohsuke.stapler.MetaClassLoader;
 import org.kohsuke.stapler.WebApp;
 import org.kohsuke.stapler.jelly.JellyFacet;
-
-import java.net.URL;
-import java.net.URLClassLoader;
 
 @Restricted(NoExternalUse.class)
 public class StaplerManager extends ExtensionListListener {

@@ -1,60 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>plugin</artifactId>
-        <version>5.17</version>
-        <relativePath />
-    </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jenkins-ci.plugins</groupId>
+    <artifactId>plugin</artifactId>
+    <version>5.22</version>
+    <relativePath />
+  </parent>
 
-    <groupId>io.jenkins.plugins</groupId>
-    <artifactId>localization-support</artifactId>
-    <version>${revision}.${changelist}</version>
-    <packaging>hpi</packaging>
+  <groupId>io.jenkins.plugins</groupId>
+  <artifactId>localization-support</artifactId>
+  <version>${revision}.${changelist}</version>
+  <packaging>hpi</packaging>
 
-    <name>Localization Support Plugin</name>
-    <url>https://github.com/jenkinsci/localization-support-plugin</url>
+  <name>Localization Support Plugin</name>
+  <url>https://github.com/jenkinsci/localization-support-plugin</url>
 
-    <properties>
-        <revision>1</revision>
-        <changelist>999999-SNAPSHOT</changelist>
-        <jenkins.version>2.479.3</jenkins.version>
-        <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
-    </properties>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://opensource.org/licenses/MIT</url>
+    </license>
+  </licenses>
 
-    <licenses>
-        <license>
-            <name>MIT License</name>
-            <url>https://opensource.org/licenses/MIT</url>
-        </license>
-    </licenses>
+  <scm>
+    <connection>scm:git:https://github.com/${gitHubRepo}.git</connection>
+    <developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
+    <tag>${scmTag}</tag>
+    <url>https://github.com/${gitHubRepo}</url>
+  </scm>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.kohsuke.metainf-services</groupId>
-            <artifactId>metainf-services</artifactId>
-            <version>1.7</version>
-        </dependency>
-    </dependencies>
+  <properties>
+    <revision>1</revision>
+    <changelist>999999-SNAPSHOT</changelist>
+    <jenkins.version>2.479.3</jenkins.version>
+    <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
+    <hpi.strictBundledArtifacts>true</hpi.strictBundledArtifacts>
+    <spotless.check.skip>false</spotless.check.skip>
+  </properties>
 
-    <scm>
-        <connection>scm:git:https://github.com/${gitHubRepo}.git</connection>
-        <developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
-        <url>https://github.com/${gitHubRepo}</url>
-        <tag>${scmTag}</tag>
-    </scm>
+  <dependencies>
+    <dependency>
+      <groupId>org.kohsuke.metainf-services</groupId>
+      <artifactId>metainf-services</artifactId>
+      <version>1.11</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
 
-    <repositories>
-        <repository>
-            <id>repo.jenkins-ci.org</id>
-            <url>https://repo.jenkins-ci.org/public/</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>repo.jenkins-ci.org</id>
-            <url>https://repo.jenkins-ci.org/public/</url>
-        </pluginRepository>
-    </pluginRepositories>
+  <repositories>
+    <repository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </pluginRepository>
+  </pluginRepositories>
 </project>

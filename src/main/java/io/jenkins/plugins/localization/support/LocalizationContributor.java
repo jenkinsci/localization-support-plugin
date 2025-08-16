@@ -28,9 +28,8 @@ import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.ExtensionList;
 import hudson.ExtensionPoint;
 import hudson.PluginWrapper;
-import jenkins.model.Jenkins;
-
 import java.net.URL;
+import jenkins.model.Jenkins;
 
 public abstract class LocalizationContributor implements ExtensionPoint {
 
