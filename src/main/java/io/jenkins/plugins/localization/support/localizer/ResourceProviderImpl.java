@@ -24,11 +24,10 @@
 package io.jenkins.plugins.localization.support.localizer;
 
 import io.jenkins.plugins.localization.support.LocalizationContributor;
+import java.net.URL;
 import org.jvnet.localizer.ResourceProvider;
 import org.kohsuke.accmod.Restricted;
 import org.kohsuke.accmod.restrictions.NoExternalUse;
-
-import java.net.URL;
 
 @Restricted(NoExternalUse.class)
 public class ResourceProviderImpl extends ResourceProvider {

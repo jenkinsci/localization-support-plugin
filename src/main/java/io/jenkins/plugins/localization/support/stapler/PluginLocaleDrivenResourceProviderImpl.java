@@ -28,13 +28,12 @@ import hudson.Extension;
 import hudson.ExtensionList;
 import hudson.PluginWrapper;
 import io.jenkins.plugins.localization.support.LocalizationContributor;
-import jenkins.model.Jenkins;
-import jenkins.PluginLocaleDrivenResourceProvider;
-import org.kohsuke.accmod.Restricted;
-import org.kohsuke.accmod.restrictions.NoExternalUse;
-
 import java.net.URL;
 import java.util.logging.Logger;
+import jenkins.PluginLocaleDrivenResourceProvider;
+import jenkins.model.Jenkins;
+import org.kohsuke.accmod.Restricted;
+import org.kohsuke.accmod.restrictions.NoExternalUse;
 
 @Extension
 @Restricted(NoExternalUse.class)
