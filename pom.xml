@@ -10,15 +10,15 @@
 
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>localization-support</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}.${changelist}</version>
     <packaging>hpi</packaging>
 
     <name>Localization Support Plugin</name>
     <url>https://github.com/jenkinsci/localization-support-plugin</url>
 
     <properties>
-        <revision>1.4</revision>
-        <changelist>-SNAPSHOT</changelist>
+        <revision>1</revision>
+        <changelist>999999-SNAPSHOT</changelist>
         <jenkins.version>2.479.3</jenkins.version>
         <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
     </properties>
